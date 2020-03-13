@@ -1,6 +1,6 @@
 #root {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #333;
+  background-color: #293241;
   color: #fff;
   font-size: 1.13m;
   line-height: 1.5;
@@ -49,9 +49,9 @@
 .btn{
   flex: 1;
   max-width: 120px;
-  border: 1px solid seashell;
+  border: 1px solid #EE6C4D;
   height: 3em;
-  color: #333;
+  color: #3D5A80;
   text-decoration: none;
   padding-top: 1.2em;
   background-color: #fff;
@@ -59,5 +59,5 @@
   border-radius: 3px;
 }
 .btn:hover{
-  background-color: salmon;
+  background-color: #EE6C4D;
 }
