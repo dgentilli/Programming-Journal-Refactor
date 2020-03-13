@@ -36,6 +36,28 @@
 
 .header-text-container{
   padding: 2em;
-  color: white;
+  color: #fff;
   opacity: 1;
+}
+
+.btn-container{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 1.5em;
+}
+
+.btn{
+  flex: 1;
+  max-width: 120px;
+  border: 1px solid seashell;
+  height: 3em;
+  color: #333;
+  text-decoration: none;
+  padding-top: 1.2em;
+  background-color: #fff;
+  opacity: 0.8;
+  border-radius: 3px;
+}
+.btn:hover{
+  background-color: salmon;
 }

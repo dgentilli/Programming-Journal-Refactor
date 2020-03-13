@@ -15,8 +15,10 @@ class Header extends Component {
                 <div className="header-text-container">
                     <h1>Daily Programming Journal</h1>
                     <p>Every programmer needs a way to record lessons learned and document challenges encountered. This is the perfect way to chart your progress.</p>
-                    <a href="#" class="btn">Get Started</a>
-                    <a href="#" class="btn">Read More</a>
+                    <div className="btn-container">
+                        <a href="#" class="btn">Get Started</a>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
                 </div>
             </div>
         );
