@@ -1,6 +1,6 @@
 #root {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #293241;
+  /* background-color: #293241; */
   color: #fff;
   font-size: 1.13m;
   line-height: 1.5;
@@ -27,12 +27,12 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: #293241;
+    /* background-color: #293241; */
+    background-color: #fff;
     width: 100%;
     height: 450px;
     z-index: -1;
     opacity: 0.8;
-
 }
 
 .header-text-container{
@@ -66,9 +66,40 @@
 .about-container{
   background-color: #3D5A80;
   padding: 2em;
-  padding-top: 1em;
+  margin-top: 0.5em;
+  margin-bottom: -0.75em;
 }
 
-.about-container h1 {
-  margin-top: inherit;
+.input-container{
+  background-color: #EE6C4D;
+  margin-top: 0.5em;
 }
+
+.input-container input{
+  width: 90%;
+  height: 1.2em;
+  padding: 5px;
+}
+.input-container textarea{
+  width: 90%;
+  height: 10em;
+  padding: 5px;
+}
+
+.form-btn{
+  height: 3em;
+  background-color: transparent;
+  margin: 5px;
+}
+
+#submit-btn{
+  color: #333;
+  border: 1px solid #333;
+}
+
+#cancel-btn{
+  color: rgb(110, 19, 19);
+  border: 1px solid rgb(110, 19, 19);
+
+}
+

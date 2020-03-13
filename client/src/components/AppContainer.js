@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import About from './About';
+import Input from './Input';
+import Footer from './Footer';
 
 class AppContainer extends Component {
     constructor(props) {
@@ -13,6 +15,8 @@ class AppContainer extends Component {
         return (
             <div className="app-container">
                 <About />
+                <Input />
+                <Footer />
             </div>
         );
     }
