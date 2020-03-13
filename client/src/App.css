@@ -32,7 +32,7 @@
     width: 100%;
     height: 450px;
     z-index: -1;
-    opacity: 0.8;
+    /* opacity: 0.8; */
 }
 
 .header-text-container{
@@ -84,6 +84,7 @@
   width: 90%;
   height: 10em;
   padding: 5px;
+  margin-top: 0.5em;
 }
 
 .form-btn{
@@ -103,3 +104,18 @@
 
 }
 
+.list-container{
+  background-color: #3D5A80;
+  padding-top: 1em;
+  margin-top: 0.5em;
+}
+
+.list-container ul{
+  list-style: none;
+  text-align: left;
+}
+
+.list-container li{
+  width: auto;
+  padding: 0.75em;
+}
