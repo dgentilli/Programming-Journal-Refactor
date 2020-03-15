@@ -13,18 +13,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-/** API Routes Go Here */
-
 /** PRODUCTION CODE ONLY
  *Serve static files from the React frontend app 
  */
-if (process.env.NODE_ENV !== "development") {
+if (process.env.NODE_ENV === "production") {
     const path = require("path");
-    app.use('/static', express.static(path.join(__dirname, "client/build")));
+    app.use(express.static(path.join(__dirname, "client/build")));
     app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname + "/client/build/index.html"));
+        res.sendFile(path.join(__dirname + "client/build/index.html"));
     });
 }
+
+/** API Routes Go Here */
 
 
 
