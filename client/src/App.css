@@ -92,6 +92,7 @@
   height: 3em;
   background-color: transparent;
   margin: 5px;
+  border-radius: 3px;
 }
 
 #submit-btn{
