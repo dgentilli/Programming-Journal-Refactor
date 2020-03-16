@@ -7,8 +7,14 @@ class Input extends Component {
         this.state = {
             isLoaded: false,
             title: '',
-            content: ''
+            content: '',
+            isLoggedIn: this.props.isLoggedIn,
+            user: this.props.user
         };
+    }
+
+    componentDidMount() {
+        console.log("Input component props: ", this.props.user)
     }
 
     handleInputChange = (e) => {
@@ -44,7 +50,8 @@ class Input extends Component {
     render() {
         return (
             <div className="input-container">
-                <h2>Make an Entry for</h2>
+                <h2>Hello, {this.state.user.email} !</h2>
+                <h3>Make an Entry for{Date.now}</h3>
                 <form>
                     <input
                         type='text'

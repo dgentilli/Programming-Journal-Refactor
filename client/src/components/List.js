@@ -5,12 +5,15 @@ class List extends Component {
         super(props);
         this.state = {
             isLoaded: false,
-            journalEntries: []
+            journalEntries: [],
+            isLoggedIn: this.props.isLoggedIn,
+            user: this.props.user
         };
     }
 
     componentDidMount() {
         console.log("List component mounted.");
+        console.log("List component props: ", this.props)
         this.fetchJournalEntries();
     }
 
@@ -40,7 +43,7 @@ class List extends Component {
 
         return (
             <div className="list-container">
-                <h2>Daily Entries for dgentilli@gmail.com</h2>
+                <h2>Daily Entries for {this.state.user.email}</h2>
                 <ul>
                     {journalList}
                 </ul>

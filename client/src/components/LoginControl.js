@@ -13,7 +13,7 @@ class LoginControl extends Component {
             email: '',
             password: '',
             error: {},
-            userObject: {}
+            user: {}
         };
     }
     handleInputChange = (e) => {
@@ -136,8 +136,8 @@ class LoginControl extends Component {
         let display = (
             this.state.isLoggedIn ?
                 <div>
-                    <Input />
-                    <List />
+                    <Input isLoggedIn={this.state.isLoggedIn} user={this.state.user} />
+                    <List isLoggedIn={this.state.isLoggedIn} user={this.state.user} />
                 </div> : null
         )
         return (
