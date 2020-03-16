@@ -34,4 +34,21 @@ router.post("/create", async (req, res) => {
     }
 })
 
+/**
+ * Journal Get All Route
+ * @ POST /api/journal/all
+ */
+router.get("/all", (req, res, err) => {
+    try {
+        Journal.find({})
+            .sort({ _id: -1 })
+            .then(journals => {
+                res.json(journals);
+            });
+    } catch (err) {
+        res.json({ err: "Something went wrong. Please try again." });
+    }
+});
+
+
 module.exports = router;
