@@ -111,7 +111,7 @@ class LoginControl extends Component {
                     <form>
                         <input
                             type='text'
-                            name='loginemail'
+                            name='email'
                             placeholder="Enter an email address"
                             value={this.state.email}
                             onChange={this.handleInputChange}
