@@ -26,7 +26,8 @@ class LoginControl extends Component {
             email: this.state.email,
             password: this.state.password
         };
-        fetch('/api/users/signup', {
+        console.log("userData: ", userData)
+        fetch('/api/author/signup', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -34,6 +35,31 @@ class LoginControl extends Component {
             body: userData
         }).then(res => {
             console.log("Sign up server response: ", res)
+            const resBody = res.json();
+            Promise.resolve(resBody).then(userObject => {
+                if (userObject.success === false) {
+                    this.setState({ error: userObject.msg })
+                } else {
+                    this.setState({ user: userObject })
+                }
+            })
+        })
+    }
+
+    submitLoginData() {
+        console.log("Submit User Data");
+        const userData = {
+            email: this.state.email,
+            password: this.state.password
+        };
+        fetch('/api/author/login', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: userData
+        }).then(res => {
+            console.log("Login server response: ", res)
             const resBody = res.json();
             Promise.resolve(resBody).then(userObject => {
                 if (userObject.success === false) {
@@ -53,7 +79,7 @@ class LoginControl extends Component {
     handleLogin = e => {
         console.log("Handle Login Click");
         e.preventDefault();
-        this.submitData();
+        this.submitLoginData();
     }
 
     render() {
@@ -63,17 +89,17 @@ class LoginControl extends Component {
                 <List />
             </div> :
                 <div>
-                    <h2>Sign Up!</h2>
+                    <h2 style={{ color: 'black' }}>Sign Up!</h2>
                     <form>
                         <input
-                            type='text'
+                            type='email'
                             name='email'
                             placeholder="Enter an email address"
                             value={this.state.email}
                             onChange={this.handleInputChange}
                         />
                         <input
-                            type='text'
+                            type='password'
                             name='password'
                             placeholder="Enter a password"
                             value={this.state.password}
@@ -81,10 +107,11 @@ class LoginControl extends Component {
                         />
                     </form>
                     <button onClick={this.handleSignup}>Submit</button>
+                    <h2 style={{ color: 'black' }}>Login!</h2>
                     <form>
                         <input
                             type='text'
-                            name='email'
+                            name='loginemail'
                             placeholder="Enter an email address"
                             value={this.state.email}
                             onChange={this.handleInputChange}
