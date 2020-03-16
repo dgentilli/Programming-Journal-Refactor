@@ -87,11 +87,15 @@ class LoginControl extends Component {
         this.setState({ isUser: !this.state.isUser });
     }
 
+    logoutClick = () => {
+        this.setState({ isLoggedIn: false, user: {} })
+    }
     render() {
-        let loginLogout = (
-            this.state.isUser ?
-                <div>
-                    <h2 style={{ color: 'black' }}>Login!</h2>
+        let loginLogout;
+        if (!this.state.isLoggedIn && this.state.isUser) {
+            loginLogout = (
+                <div className="login-signup-container">
+                    <h2>Login!</h2>
                     <form>
                         <input
                             type='email'
@@ -108,11 +112,13 @@ class LoginControl extends Component {
                             onChange={this.handleInputChange}
                         />
                     </form>
-                    <button onClick={this.handleLogin}>Submit</button>
+                    <button onClick={this.handleLogin}>Login</button>
                     <button onClick={this.handleUserClick}>Go To Sign up</button>
-                </div> :
-                <div>
-                    <h2 style={{ color: 'black' }}>Sign Up!</h2>
+                </div>)
+        } else if (!this.state.isLoggedIn && !this.state.isUser) {
+            loginLogout = (
+                <div id="login-control" className="login-signup-container">
+                    <h2>Sign Up!</h2>
                     <form>
                         <input
                             type='email'
@@ -129,10 +135,16 @@ class LoginControl extends Component {
                             onChange={this.handleInputChange}
                         />
                     </form>
-                    <button onClick={this.handleSignup}>Submit</button>
-                    <button onClick={this.handleUserClick}>Go To Login</button>
+                    <div className=".btn-container">
+                        <button onClick={this.handleSignup}>Sign up</button>
+                        <button onClick={this.handleUserClick}>Go To Login</button>
+                    </div>
                 </div>
-        )
+            )
+        } else if (this.state.isLoggedIn) {
+            loginLogout = (<div className="login-signup-container"><button id="logout-btn" onClick={this.logoutClick}>Logout</button></div>)
+        }
+
         let display = (
             this.state.isLoggedIn ?
                 <div>
