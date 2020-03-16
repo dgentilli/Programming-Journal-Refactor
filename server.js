@@ -5,10 +5,10 @@ const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 
 const journal = require('./api/journal');
+const author = require('./api/author');
 
 
 /** API Goes Here */
-
 
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
@@ -28,6 +28,7 @@ if (process.env.NODE_ENV === "production") {
 
 /** API Routes Go Here */
 app.use('/api/journal', journal);
+app.use('/api/author', author);
 
 
 /** Connect to Mongo DB */
