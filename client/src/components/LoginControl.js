@@ -83,6 +83,10 @@ class LoginControl extends Component {
         this.submitLoginData();
     }
 
+    handleUserClick = () => {
+        this.setState({ isUser: !this.state.isUser });
+    }
+
     render() {
         let loginLogout = (
             this.state.isUser ?
@@ -90,7 +94,7 @@ class LoginControl extends Component {
                     <h2 style={{ color: 'black' }}>Login!</h2>
                     <form>
                         <input
-                            type='text'
+                            type='email'
                             name='email'
                             placeholder="Enter an email address"
                             value={this.state.email}
@@ -105,6 +109,7 @@ class LoginControl extends Component {
                         />
                     </form>
                     <button onClick={this.handleLogin}>Submit</button>
+                    <button onClick={this.handleUserClick}>Go To Sign up</button>
                 </div> :
                 <div>
                     <h2 style={{ color: 'black' }}>Sign Up!</h2>
@@ -125,6 +130,7 @@ class LoginControl extends Component {
                         />
                     </form>
                     <button onClick={this.handleSignup}>Submit</button>
+                    <button onClick={this.handleUserClick}>Go To Login</button>
                 </div>
         )
         let display = (
