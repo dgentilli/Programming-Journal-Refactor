@@ -4,6 +4,8 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 
+const journal = require('./api/journal');
+
 
 /** API Goes Here */
 
@@ -25,7 +27,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 /** API Routes Go Here */
-
+app.use('/api/journal', journal);
 
 
 /** Connect to Mongo DB */
