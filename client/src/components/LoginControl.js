@@ -9,6 +9,7 @@ class LoginControl extends Component {
         super(props);
         this.state = {
             isLoggedIn: false,
+            isUser: false,
             email: '',
             password: '',
             error: {},
@@ -40,7 +41,7 @@ class LoginControl extends Component {
                 if (userObject.success === false) {
                     this.setState({ error: userObject.msg })
                 } else {
-                    this.setState({ user: userObject })
+                    this.setState({ isUser: true, user: userObject })
                 }
             })
         })
@@ -83,11 +84,28 @@ class LoginControl extends Component {
     }
 
     render() {
-        let display = (
-            this.state.isLoggedIn ? <div>
-                <Input />
-                <List />
-            </div> :
+        let loginLogout = (
+            this.state.isUser ?
+                <div>
+                    <h2 style={{ color: 'black' }}>Login!</h2>
+                    <form>
+                        <input
+                            type='text'
+                            name='email'
+                            placeholder="Enter an email address"
+                            value={this.state.email}
+                            onChange={this.handleInputChange}
+                        />
+                        <input
+                            type='password'
+                            name='password'
+                            placeholder="Enter a password"
+                            value={this.state.password}
+                            onChange={this.handleInputChange}
+                        />
+                    </form>
+                    <button onClick={this.handleLogin}>Submit</button>
+                </div> :
                 <div>
                     <h2 style={{ color: 'black' }}>Sign Up!</h2>
                     <form>
@@ -107,28 +125,18 @@ class LoginControl extends Component {
                         />
                     </form>
                     <button onClick={this.handleSignup}>Submit</button>
-                    <h2 style={{ color: 'black' }}>Login!</h2>
-                    <form>
-                        <input
-                            type='text'
-                            name='email'
-                            placeholder="Enter an email address"
-                            value={this.state.email}
-                            onChange={this.handleInputChange}
-                        />
-                        <input
-                            type='text'
-                            name='password'
-                            placeholder="Enter a password"
-                            value={this.state.password}
-                            onChange={this.handleInputChange}
-                        />
-                    </form>
-                    <button onClick={this.handleLogin}>Submit</button>
                 </div>
+        )
+        let display = (
+            this.state.isLoggedIn ?
+                <div>
+                    <Input />
+                    <List />
+                </div> : null
         )
         return (
             <div>
+                {loginLogout}
                 {display}
             </div>
         );
