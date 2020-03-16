@@ -22,10 +22,10 @@ class LoginControl extends Component {
 
     submitSignupData() {
         console.log("Submit User Data");
-        const userData = {
+        const userData = JSON.stringify({
             email: this.state.email,
             password: this.state.password
-        };
+        });
         console.log("userData: ", userData)
         fetch('/api/author/signup', {
             method: "POST",
@@ -48,10 +48,10 @@ class LoginControl extends Component {
 
     submitLoginData() {
         console.log("Submit User Data");
-        const userData = {
+        const userData = JSON.stringify({
             email: this.state.email,
             password: this.state.password
-        };
+        });
         fetch('/api/author/login', {
             method: "POST",
             headers: {
