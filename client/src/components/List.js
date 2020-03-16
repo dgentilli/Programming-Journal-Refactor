@@ -4,20 +4,45 @@ class List extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoaded: false
+            isLoaded: false,
+            journalEntries: []
         };
     }
 
+    componentDidMount() {
+        console.log("List component mounted.");
+        this.fetchJournalEntries();
+    }
+
+    fetchJournalEntries() {
+        fetch("/api/journal/all", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => {
+            const resBody = res.json();
+            Promise.resolve(resBody).then(journals => {
+                this.setState({
+                    journalEntries: journals
+                })
+            })
+        })
+
+    }
+
     render() {
+        let journals = this.state.journalEntries;
+        let journalList =
+            journals.map(journal => (
+                <li key={journal._id}>{journal.title}</li>
+            ))
+
         return (
             <div className="list-container">
                 <h2>Daily Entries for dgentilli@gmail.com</h2>
                 <ul>
-                    <li>13 March 2020: Using CSS Grid for responsive layout</li>
-                    <li>12 March 2020: Difference between position relative and absolute</li>
-                    <li>11 March 2020: File Upload!!!!!</li>
-                    <li>10 March 2020: Styled Components</li>
-                    <li>09 March 2020: How to build a markdown blog!</li>
+                    {journalList}
                 </ul>
 
             </div>
