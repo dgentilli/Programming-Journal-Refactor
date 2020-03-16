@@ -3,6 +3,7 @@ import About from './About';
 import Input from './Input';
 import Footer from './Footer';
 import List from './List';
+import LoginControl from "./LoginControl";
 
 class AppContainer extends Component {
     constructor(props) {
@@ -12,12 +13,19 @@ class AppContainer extends Component {
         };
     }
 
+    //Think about restructuring as such:
+    //AppContainer will render About, LoginControl, and Footer
+    //LoginControl responsibility: Render conditionally and pass props
+    //Default isLoggedIn false
+    ////Displays two components --> SignUp and Login
+    //Once user Signs up or logs in
+    ////Display Input and List
+
     render() {
         return (
             <div className="app-container">
                 <About />
-                <Input />
-                <List />
+                <LoginControl />
                 <Footer />
             </div>
         );
