@@ -10,7 +10,7 @@ class About extends Component {
 
     render() {
         return (
-            <div className="about-container">
+            <div id="about" className="about-container">
                 <h2>Contiuous Learning</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto sunt sapiente nihil nesciunt accusamus quibusdam vitae labore ut saepe? Facere debitis quod suscipit ratione, dignissimos nesciunt sapiente culpa pariatur tenetur laborum dolorem molestiae nihil voluptate quidem deleniti repellat ad. Ipsam?</p>
             </div>
