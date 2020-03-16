@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const jwt = require('jsonwebtoken');
+const keys = require("../config/keys");
 
 const Journal = require("../models/Journal");
 const Author = require("../models/Author");
@@ -51,5 +53,71 @@ router.post("/signup", (req, res) => {
     });
 });
 
+/**
+ * Login route
+ * @ POST /api/author/login
+ */
+
+router.post("/login", (req, res) => {
+    const { errors, isValid } = validateLoginInput(req.body);
+
+    //Check validation
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+    //TO DO: Refactor using deconstruction
+    const email = req.body.email;
+    const password = req.body.password;
+
+    Author.findOne({ email }).then(user => {
+        if (!user) {
+            return res.status(400).json({
+                success: false,
+                token: null,
+                _id: null,
+                email: null,
+                userName: null,
+                msg: "Email not found. Please Sign Up!"
+            });
+        }
+        //Check Password
+        user.comparePassword(password).then(isMatch => {
+            if (isMatch) {
+                // User matched
+                // Create Passport JWT Payload
+                const payload = {
+                    id: user.id,
+                    email: user.email
+                };
+                //Sign Token
+                jwt.sign(
+                    payload,
+                    keys.secretOrKey,
+                    {
+                        expiresIn: 31556926 // 1 year in seconds
+                    },
+                    (err, token) => {
+                        res.json({
+                            success: true,
+                            token: "Bearer " + token,
+                            id: user.id,
+                            email: user.email,
+                            userName: user.userName
+                        });
+                    }
+                );
+            } else {
+                return res.status(400).json({
+                    success: false,
+                    token: null,
+                    _id: null,
+                    email: null,
+                    userName: null,
+                    msg: "Password incorrect"
+                });
+            }
+        });
+    });
+});
 
 module.exports = router;
