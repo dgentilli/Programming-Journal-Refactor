@@ -39,9 +39,12 @@ class LoginControl extends Component {
             const resBody = res.json();
             Promise.resolve(resBody).then(userObject => {
                 if (userObject.success === false) {
-                    this.setState({ error: userObject.msg })
+                    this.setState({ user: userObject })
+                    console.log("error state on failed response: ", this.state.error)
                 } else {
                     this.setState({ isUser: true, user: userObject })
+                    console.log("error state on success response: ", this.state.error)
+
                 }
             })
         })
@@ -64,7 +67,8 @@ class LoginControl extends Component {
             const resBody = res.json();
             Promise.resolve(resBody).then(userObject => {
                 if (userObject.success === false) {
-                    this.setState({ error: userObject.msg })
+                    this.setState({ user: userObject })
+                    console.log("this.state.user on failed login: ", this.state.user)
                 } else {
                     this.setState({ isLoggedIn: true, user: userObject })
                 }
@@ -91,11 +95,14 @@ class LoginControl extends Component {
         this.setState({ isLoggedIn: false, user: {} })
     }
     render() {
+        let errMsg;
+        !this.state.user.success ? (errMsg = this.state.user.msg) : (errMsg = null)
         let loginLogout;
         if (!this.state.isLoggedIn && this.state.isUser) {
             loginLogout = (
                 <div className="login-signup-container">
                     <h2>Login!</h2>
+                    <div>{errMsg}</div>
                     <form>
                         <input
                             type='email'
@@ -119,6 +126,7 @@ class LoginControl extends Component {
             loginLogout = (
                 <div id="login-control" className="login-signup-container">
                     <h2>Sign Up!</h2>
+                    <div>{errMsg}</div>
                     <form>
                         <input
                             type='email'

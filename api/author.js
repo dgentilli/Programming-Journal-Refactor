@@ -16,12 +16,26 @@ const validateLoginInput = require("../validation/login");
 router.post("/signup", (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
     if (!isValid) {
-        return res.status(400).json(errors);
+        return res.status(400).json({
+            success: false,
+            token: null,
+            _id: null,
+            email: null,
+            userName: null,
+            msg: errors.msg
+        });
     }
     if (!req.body.email) {
         let errMsg =
             "Please provide user data in the request body {email: email@address.com}";
-        return res.status(400).json({ err: errMsg });
+        return res.status(400).json({
+            success: false,
+            token: null,
+            _id: null,
+            email: null,
+            userName: null,
+            msg: errMsg
+        });
     }
     Author.findOne({ email: req.body.email }).then(user => {
         if (user) {
@@ -63,9 +77,15 @@ router.post("/login", (req, res) => {
 
     //Check validation
     if (!isValid) {
-        return res.status(400).json(errors);
+        return res.status(400).json({
+            success: false,
+            token: null,
+            _id: null,
+            email: null,
+            userName: null,
+            msg: errors.msg
+        });
     }
-    //TO DO: Refactor using deconstruction
     const email = req.body.email;
     const password = req.body.password;
 
