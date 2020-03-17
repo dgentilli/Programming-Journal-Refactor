@@ -36,10 +36,15 @@ class List extends Component {
 
     render() {
         let journals = this.state.journalEntries;
-        let journalList =
-            journals.map(journal => (
+        let journalList;
+        if (journals.length > 0) {
+            journalList = journals.map(journal => (
                 <li key={journal._id}>{journal.title}</li>
             ))
+        } else {
+            journalList = <li>There are no journal entries to display.</li>
+        }
+
 
         return (
             <div className="list-container">
