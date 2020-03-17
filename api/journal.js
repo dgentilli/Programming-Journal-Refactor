@@ -23,10 +23,11 @@ router.post("/create", async (req, res) => {
         let errMsg = "Please enter some text";
         res.json({ err: errMsg });
     } else {
-        const { title, content } = req.body;
+        const { title, content, author } = req.body;
         const newJournal = new Journal({
             title,
-            content
+            content,
+            author
         })
         await newJournal.save();
         res.json(newJournal);
