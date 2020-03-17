@@ -150,7 +150,7 @@ class LoginControl extends Component {
                 </div>
             )
         } else if (this.state.isLoggedIn) {
-            loginLogout = (<div className="login-signup-container"><button id="logout-btn" onClick={this.logoutClick}>Logout</button></div>)
+            loginLogout = (<div id="login-control" className="login-signup-container"><div className="logout-btn-container"><button id="logout-btn" onClick={this.logoutClick}>Logout</button></div></div>)
         }
 
         let display = (
