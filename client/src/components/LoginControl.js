@@ -156,7 +156,6 @@ class LoginControl extends Component {
             this.state.isLoggedIn ?
                 <div>
                     <Input isLoggedIn={this.state.isLoggedIn} user={this.state.user} />
-                    <List isLoggedIn={this.state.isLoggedIn} user={this.state.user} />
                 </div> : null
         )
         return (

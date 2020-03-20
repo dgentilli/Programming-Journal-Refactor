@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { json } from "body-parser";
+import List from './List';
 
 class Input extends Component {
     constructor(props) {
@@ -73,6 +73,7 @@ class Input extends Component {
                 </form>
                 <button id="submit-btn" className="form-btn" onClick={this.handleSubmit}>Submit</button>
                 <button id='cancel-btn' className='form-btn'>Cancel</button>
+                <List isLoggedIn={this.state.isLoggedIn} user={this.state.user} title={this.state.title} />
             </div>
         );
     }

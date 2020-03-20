@@ -7,7 +7,8 @@ class List extends Component {
             isLoaded: false,
             journalEntries: [],
             isLoggedIn: this.props.isLoggedIn,
-            user: this.props.user
+            user: this.props.user,
+            title: this.props.title
         };
     }
 
@@ -15,6 +16,13 @@ class List extends Component {
         console.log("List component mounted.");
         console.log("List component props: ", this.props)
         this.fetchJournalEntries();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.title !== prevProps.title) {
+            //this.setState({ title: this.props.title });
+            this.fetchJournalEntries();
+        }
     }
 
     fetchJournalEntries() {
@@ -48,7 +56,7 @@ class List extends Component {
 
         return (
             <div className="list-container">
-                <h2>Daily Entries for {this.state.user.email}</h2>
+                <h2>Journal Entries for {this.state.user.email}</h2>
                 <ul>
                     {journalList}
                 </ul>
