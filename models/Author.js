@@ -21,6 +21,10 @@ const authorSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    journal: {
+        type: Schema.Types.ObjectId,
+        ref: "Journal"
+    },
     resetPasswordToken: String,
     resetPasswordExpires: Date
 });
