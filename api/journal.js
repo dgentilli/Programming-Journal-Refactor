@@ -35,13 +35,20 @@ router.post("/create", async (req, res) => {
     }
 })
 
+router.get("/all", (req, res) => {
+    Journal.find((err, data) => {
+        if (err) res.send(err)
+        res.json(data)
+    })
+})
+
 /**
- * Journal Get All Route
+ * Journal Get All for a specific user Route
  * @ POST /api/journal/all
  */
-router.get("/all", (req, res, err) => {
+router.get("/all/:author", (req, res, err) => {
     try {
-        Journal.find({})
+        Journal.find({ "author": req.params.author })
             .sort({ _id: -1 })
             .then(journals => {
                 res.json(journals);
@@ -50,6 +57,5 @@ router.get("/all", (req, res, err) => {
         res.json({ err: "Something went wrong. Please try again." });
     }
 });
-
 
 module.exports = router;
