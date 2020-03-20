@@ -26,7 +26,8 @@ class Input extends Component {
         console.log("Submit Data");
         const journalData = {
             title: this.state.title,
-            content: this.state.content
+            content: this.state.content,
+            author: this.state.user.id
         };
 
         fetch('/api/journal/create', {
@@ -48,6 +49,7 @@ class Input extends Component {
 
 
     render() {
+        console.log("Input user state: ", this.state.user)
         return (
             <div className="input-container">
                 <h2>Hello, {this.state.user.email} !</h2>
