@@ -5,8 +5,8 @@ const author = require("./Author");
 
 const journalSchema = new Schema(
     {
-        title: String,
-        content: String,
+        title: { type: String, required: true },
+        content: { type: String, required: true },
         author: { type: Schema.Types.ObjectId, ref: "Author" }
     },
     { timestamps: true }
