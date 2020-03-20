@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Input from './Input';
 import List from './List';
-import Login from './Login';
-import Signup from './Signup';
+
 
 class LoginControl extends Component {
     constructor(props) {
