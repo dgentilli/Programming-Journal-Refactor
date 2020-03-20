@@ -18,7 +18,7 @@ class List extends Component {
     }
 
     fetchJournalEntries() {
-        fetch("/api/journal/all", {
+        fetch(`/api/journal/all/${this.state.user.id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
