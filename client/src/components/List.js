@@ -56,7 +56,7 @@ class List extends Component {
                     <div>
                         <h4 className='journal-title'>{journal.title}</h4>
                         <p className='journal-content'>{this.state.journalContentShow !== journal._id ? journal.content.substring(0, 100) : journal.content}</p>
-                        <div>{journal.content.length > 100 && journal._id !== this.state.journalContentShow ? <button onClick={() => this.setState({ journalContentShow: journal._id })}>Read More</button> : <button onClick={() => this.setState({ journalContentShow: null })}>Show Less</button>}</div>
+                        <div>{journal._id !== this.state.journalContentShow ? <button onClick={() => this.setState({ journalContentShow: journal._id })}>Read More</button> : <button onClick={() => this.setState({ journalContentShow: null })}>Show Less</button>}</div>
                     </div>
                 </li>
             ))
