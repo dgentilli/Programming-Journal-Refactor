@@ -123,6 +123,21 @@
   padding: 0.75em;
 }
 
+.journal-title{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.journal-content{
+  padding-right: 1em;
+  font-size: 0.9em;
+}
+
+.journal-content:after{
+  content: "  Read More...";
+}
+
 .login-signup-container{
   background-color: #98C1D9;
   margin-top: 0.5em;

@@ -8,7 +8,8 @@ class List extends Component {
             journalEntries: [],
             isLoggedIn: this.props.isLoggedIn,
             user: this.props.user,
-            title: this.props.title
+            title: this.props.title,
+            journalContent: null
         };
     }
 
@@ -20,7 +21,6 @@ class List extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.title !== prevProps.title) {
-            //this.setState({ title: this.props.title });
             this.fetchJournalEntries();
         }
     }
@@ -42,12 +42,23 @@ class List extends Component {
 
     }
 
+    // contentClick() {
+    //     this.setState({ journalContent:  })
+    // }
+
     render() {
+        console.log("List state journal entries: ", this.state.journalEntries)
         let journals = this.state.journalEntries;
         let journalList;
         if (journals.length > 0) {
             journalList = journals.map(journal => (
-                <li key={journal._id}>{journal.title}</li>
+                <li key={journal._id}>
+                    <div>
+                        <h4 className='journal-title'>{journal.title}</h4>
+                        <p className='journal-content'>{this.state.journalContent !== journal._id ? journal.content.substring(0, 100) : journal.content}</p>
+                        <div>{journal.content.length > 100 ? <button onClick={() => this.setState({ journalContent: journal._id })}>Read More</button> : null}</div>
+                    </div>
+                </li>
             ))
         } else {
             journalList = <li>There are no journal entries to display.</li>
