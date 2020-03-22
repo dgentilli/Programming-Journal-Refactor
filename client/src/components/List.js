@@ -9,7 +9,7 @@ class List extends Component {
             isLoggedIn: this.props.isLoggedIn,
             user: this.props.user,
             title: this.props.title,
-            journalContent: null
+            journalContentShow: null
         };
     }
 
@@ -55,8 +55,8 @@ class List extends Component {
                 <li key={journal._id}>
                     <div>
                         <h4 className='journal-title'>{journal.title}</h4>
-                        <p className='journal-content'>{this.state.journalContent !== journal._id ? journal.content.substring(0, 100) : journal.content}</p>
-                        <div>{journal.content.length > 100 ? <button onClick={() => this.setState({ journalContent: journal._id })}>Read More</button> : null}</div>
+                        <p className='journal-content'>{this.state.journalContentShow !== journal._id ? journal.content.substring(0, 100) : journal.content}</p>
+                        <div>{journal.content.length > 100 && journal._id !== this.state.journalContentShow ? <button onClick={() => this.setState({ journalContentShow: journal._id })}>Read More</button> : <button onClick={() => this.setState({ journalContentShow: null })}>Show Less</button>}</div>
                     </div>
                 </li>
             ))
