@@ -134,6 +134,15 @@
   font-size: 0.9em;
 }
 
+.list-container button{
+  padding: 5px;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  font-size: 0.7em;
+}
+
 .login-signup-container{
   background-color: #98C1D9;
   margin-top: 0.5em;
