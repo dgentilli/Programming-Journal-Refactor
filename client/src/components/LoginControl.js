@@ -99,7 +99,7 @@ class LoginControl extends Component {
         let loginLogout;
         if (!this.state.isLoggedIn && this.state.isUser) {
             loginLogout = (
-                <div className="login-signup-container">
+                <div id="login-control" className="login-signup-container">
                     <h2>Login!</h2>
                     <div>{errMsg}</div>
                     <form>
