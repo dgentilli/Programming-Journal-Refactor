@@ -51,30 +51,32 @@ class Input extends Component {
     render() {
         console.log("Input user state: ", this.state.user)
         return (
-            <div className="input-container">
-                <h2>Hello, {this.state.user.email} !</h2>
-                <h3>Make an Entry for{Date.now}</h3>
-                <form>
-                    <input
-                        type='text'
-                        name='title'
-                        placeholder="What sort of lesson or challenge are you writing about?"
-                        value={this.state.title}
-                        onChange={this.handleInputChange}
-                    />
-                    <textarea
-                        type='text'
-                        name='content'
-                        placeholder="What do you want to record about that lesson learned or challenge encountered today?"
-                        value={this.state.content}
-                        onChange={this.handleInputChange}
+            <>
+                <div className="input-container">
+                    <h2>Hello, {this.state.user.email} !</h2>
+                    <h3>Make an Entry for{Date.now}</h3>
+                    <form>
+                        <input
+                            type='text'
+                            name='title'
+                            placeholder="What sort of lesson or challenge are you writing about?"
+                            value={this.state.title}
+                            onChange={this.handleInputChange}
+                        />
+                        <textarea
+                            type='text'
+                            name='content'
+                            placeholder="What do you want to record about that lesson learned or challenge encountered today?"
+                            value={this.state.content}
+                            onChange={this.handleInputChange}
 
-                    />
-                </form>
-                <button id="submit-btn" className="form-btn" onClick={this.handleSubmit}>Submit</button>
-                <button id='cancel-btn' className='form-btn'>Cancel</button>
+                        />
+                    </form>
+                    <button id="submit-btn" className="form-btn" onClick={this.handleSubmit}>Submit</button>
+                    <button id='cancel-btn' className='form-btn'>Cancel</button>
+                </div>
                 <List isLoggedIn={this.state.isLoggedIn} user={this.state.user} title={this.state.title} />
-            </div>
+            </>
         );
     }
 }

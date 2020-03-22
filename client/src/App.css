@@ -134,10 +134,6 @@
   font-size: 0.9em;
 }
 
-.journal-content:after{
-  content: "  Read More...";
-}
-
 .login-signup-container{
   background-color: #98C1D9;
   margin-top: 0.5em;
