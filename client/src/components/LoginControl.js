@@ -17,16 +17,13 @@ class LoginControl extends Component {
     }
     handleInputChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
-        console.log("Input Component State: ", this.state);
     }
 
     submitSignupData() {
-        console.log("Submit User Data");
         const userData = JSON.stringify({
             email: this.state.email,
             password: this.state.password
         });
-        console.log("userData: ", userData)
         fetch('/api/author/signup', {
             method: "POST",
             headers: {
@@ -34,23 +31,18 @@ class LoginControl extends Component {
             },
             body: userData
         }).then(res => {
-            console.log("Sign up server response: ", res)
             const resBody = res.json();
             Promise.resolve(resBody).then(userObject => {
                 if (userObject.success === false) {
                     this.setState({ user: userObject })
-                    console.log("error state on failed response: ", this.state.error)
                 } else {
                     this.setState({ isUser: true, user: userObject })
-                    console.log("error state on success response: ", this.state.error)
-
                 }
             })
         })
     }
 
     submitLoginData() {
-        console.log("Submit User Data");
         const userData = JSON.stringify({
             email: this.state.email,
             password: this.state.password
@@ -62,12 +54,10 @@ class LoginControl extends Component {
             },
             body: userData
         }).then(res => {
-            console.log("Login server response: ", res)
             const resBody = res.json();
             Promise.resolve(resBody).then(userObject => {
                 if (userObject.success === false) {
                     this.setState({ user: userObject })
-                    console.log("this.state.user on failed login: ", this.state.user)
                 } else {
                     this.setState({ isLoggedIn: true, user: userObject })
                 }
@@ -75,13 +65,11 @@ class LoginControl extends Component {
         })
     }
     handleSignup = e => {
-        console.log("Handle Sign up Click");
         e.preventDefault();
         this.submitSignupData();
     }
 
     handleLogin = e => {
-        console.log("Handle Login Click");
         e.preventDefault();
         this.submitLoginData();
     }

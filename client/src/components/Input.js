@@ -13,17 +13,11 @@ class Input extends Component {
         };
     }
 
-    componentDidMount() {
-        console.log("Input component props: ", this.props.user)
-    }
-
     handleInputChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
-        console.log("Input Component State: ", this.state);
     }
 
     submitData() {
-        console.log("Submit Data");
         const journalData = {
             title: this.state.title,
             content: this.state.content,
@@ -36,12 +30,11 @@ class Input extends Component {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(journalData)
-        }).then(res => res.json()).then(data => console.log("Journal Data sent to server: ", data));
+        }).then(res => res.json());
 
     }
 
     handleSubmit = async e => {
-        console.log("Handle Submit Click");
         e.preventDefault();
         await this.submitData();
         this.setState({ title: '', content: '' });
@@ -49,7 +42,6 @@ class Input extends Component {
 
 
     render() {
-        console.log("Input user state: ", this.state.user)
         let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         let today = new Date();
         return (

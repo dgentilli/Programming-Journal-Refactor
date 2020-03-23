@@ -14,8 +14,6 @@ class List extends Component {
     }
 
     componentDidMount() {
-        console.log("List component mounted.");
-        console.log("List component props: ", this.props)
         this.fetchJournalEntries();
     }
 
@@ -42,12 +40,7 @@ class List extends Component {
 
     }
 
-    // contentClick() {
-    //     this.setState({ journalContent:  })
-    // }
-
     render() {
-        console.log("List state journal entries: ", this.state.journalEntries)
         let journals = this.state.journalEntries;
         let journalList;
         if (journals.length > 0) {
