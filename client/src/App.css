@@ -117,6 +117,7 @@
 .list-container{
   background-color: #293241;
   padding-top: 1em;
+  padding-bottom: 1em;
   /* margin-top: 0.5em; */
 }
 
@@ -234,6 +235,12 @@
 .footer-projects{
   margin-top: 1.5em;
   margin-bottom: 1.5em;
+}
+
+@media(max-width: 330px){
+  .header-container{
+    height: auto;
+  }
 }
 
 @media(min-width: 700px){
