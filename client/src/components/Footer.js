@@ -11,10 +11,12 @@ class Footer extends Component {
     render() {
         return (
             <div className="footer-container">
-                <a href="#top">Back to Top</a>
-                <a href="#input">Input Form</a>
-                <a href="#journal">Journal List</a>
-                <p>Check out more of my projects <a href="https://www.davegentilli.com/">here</a></p>
+                <div className="footer-nav-links">
+                    <a href="#top">Back to Top</a>
+                    <a href="#input">Input Form</a>
+                    <a href="#journal">Journal List</a>
+                </div>
+                <p className="footer-projects">Check out more of my projects <a href="https://www.davegentilli.com/">here</a></p>
                 Copyright &copy; {new Date().getFullYear()} Dave Gentilli
             </div>
         );

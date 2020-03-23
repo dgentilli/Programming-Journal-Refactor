@@ -192,3 +192,21 @@
   margin-top: 0.5em;
   padding: 1em;
 }
+
+.footer-nav-links{
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.footer-nav-links a{
+  flex: 1;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.footer-projects{
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
