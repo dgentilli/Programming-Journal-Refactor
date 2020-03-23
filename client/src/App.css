@@ -254,4 +254,7 @@
   .input-container form{
     grid-column: 2/4;
   }
+  .list-container h2, ul{
+    grid-column: 2/4;
+  }
 }
