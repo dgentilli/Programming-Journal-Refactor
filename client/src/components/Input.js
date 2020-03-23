@@ -50,11 +50,13 @@ class Input extends Component {
 
     render() {
         console.log("Input user state: ", this.state.user)
+        let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        let today = new Date();
         return (
             <>
                 <div id="input" className="input-container">
                     <h2>Hello, {this.state.user.email} !</h2>
-                    <h3>Make an Entry for{Date.now}</h3>
+                    <h4>Make an Entry for {today.toLocaleDateString("en-US", options)}</h4>
                     <form>
                         <input
                             type='text'

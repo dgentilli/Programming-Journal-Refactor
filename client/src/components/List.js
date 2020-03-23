@@ -55,6 +55,7 @@ class List extends Component {
                 <li key={journal._id}>
                     <div>
                         <h4 className='journal-title'>{journal.title}</h4>
+                        <p className="journal-date">{journal.createdAt.substring(0, 10)}</p>
                         <p className='journal-content'>{this.state.journalContentShow !== journal._id ? journal.content.substring(0, 100) + " ..." : journal.content}</p>
                         <div>{journal._id !== this.state.journalContentShow ? <button onClick={() => this.setState({ journalContentShow: journal._id })}>Read More</button> : <button onClick={() => this.setState({ journalContentShow: null })}>Show Less</button>}</div>
                     </div>
