@@ -241,8 +241,12 @@
   .login-signup-container form{
     grid-column: 2/4;
   }
-  .login-signup-container .btn-container{
+  .login-signup-container .btn-container, .logout-btn-container{
     grid-column: 2/4;
+  }
+  #logout-btn{
+    margin-top: 0;
+    margin-bottom: 2em;
   }
   .footer-nav-links, .footer-projects, .copyright-container{
     grid-column: 2/4;
