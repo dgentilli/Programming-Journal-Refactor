@@ -69,7 +69,15 @@
   padding: 2em;
   margin-top: 0.5em;
   margin-bottom: -0.75em;
+}
 
+.about-container p{
+  text-align: left;
+}
+
+.about-container a{
+  color: #EE6C4D;
+  text-decoration: none;
 }
 
 .input-container{
