@@ -85,6 +85,9 @@
   background-color: #EE6C4D;
   /* margin-top: 0.5em; */
 }
+.input-container h2{
+  padding-top: 1em;
+}
 
 .input-container input{
   width: 90%;
