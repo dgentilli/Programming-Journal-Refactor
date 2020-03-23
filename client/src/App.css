@@ -235,7 +235,7 @@
   .login-signup-container{
     margin-top: 1.25em;
   }
-  .login-signup-container h2{
+  .login-signup-container h2, div{
     grid-column: 2/4;
   }
   .login-signup-container form{
