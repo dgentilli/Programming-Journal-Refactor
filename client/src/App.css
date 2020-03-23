@@ -214,6 +214,10 @@
   margin-bottom: 5px;
 }
 
+.footer-container p a{
+  text-decoration: none;
+  color: #293241;
+}
 .footer-projects{
   margin-top: 1.5em;
   margin-bottom: 1.5em;
