@@ -210,3 +210,38 @@
   margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
+
+@media(min-width: 700px){
+  .header-container{
+    display: grid;
+    grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
+    padding-top: 2em;
+  }
+  .header-text-container, .btn-container{
+    grid-column: 2/4;
+  }
+  
+  .about-container, .input-container, .list-container, .footer-container, .login-signup-container{
+    display: grid;
+    /* grid-template-columns: 1fr repeat(2 minmax(auto, 25em)) 1fr; */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .about-container h2, p{
+    grid-column: 2/4;
+  }
+  .input-container h2, h3{
+    grid-column: 2/4;
+  }
+  .login-signup-container h2{
+    grid-column: 2/4;
+  }
+  .login-signup-container form{
+    grid-column: 2/4;
+  }
+  .login-signup-container .btn-container{
+    grid-column: 2/4;
+  }
+  .footer-nav-links, .footer-projects, .copyright-container{
+    grid-column: 2/4;
+  }
+}

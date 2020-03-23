@@ -86,7 +86,8 @@ class LoginControl extends Component {
         this.submitLoginData();
     }
 
-    handleUserClick = () => {
+    handleUserClick = (e) => {
+        e.preventDefault();
         this.setState({ isUser: !this.state.isUser });
     }
 
@@ -117,9 +118,11 @@ class LoginControl extends Component {
                             value={this.state.password}
                             onChange={this.handleInputChange}
                         />
+                        <div className='.btn-container'>
+                            <button onClick={this.handleLogin}>Login</button>
+                            <button onClick={this.handleUserClick}>Go To Sign up</button>
+                        </div>
                     </form>
-                    <button onClick={this.handleLogin}>Login</button>
-                    <button onClick={this.handleUserClick}>Go To Sign up</button>
                 </div>)
         } else if (!this.state.isLoggedIn && !this.state.isUser) {
             loginLogout = (
@@ -141,11 +144,11 @@ class LoginControl extends Component {
                             value={this.state.password}
                             onChange={this.handleInputChange}
                         />
+                        <div className=".btn-container">
+                            <button onClick={this.handleSignup}>Sign up</button>
+                            <button onClick={this.handleUserClick}>Go To Login</button>
+                        </div>
                     </form>
-                    <div className=".btn-container">
-                        <button onClick={this.handleSignup}>Sign up</button>
-                        <button onClick={this.handleUserClick}>Go To Login</button>
-                    </div>
                 </div>
             )
         } else if (this.state.isLoggedIn) {
