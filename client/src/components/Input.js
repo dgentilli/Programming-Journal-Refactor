@@ -71,9 +71,9 @@ class Input extends Component {
                             onChange={this.handleInputChange}
 
                         />
+                        <button id="submit-btn" className="form-btn" onClick={this.handleSubmit}>Submit</button>
+                        <button id='cancel-btn' className='form-btn'>Cancel</button>
                     </form>
-                    <button id="submit-btn" className="form-btn" onClick={this.handleSubmit}>Submit</button>
-                    <button id='cancel-btn' className='form-btn'>Cancel</button>
                 </div>
                 <List isLoggedIn={this.state.isLoggedIn} user={this.state.user} title={this.state.title} />
             </>

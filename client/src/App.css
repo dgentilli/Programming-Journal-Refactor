@@ -251,4 +251,7 @@
   .footer-nav-links, .footer-projects, .copyright-container{
     grid-column: 2/4;
   }
+  .input-container form{
+    grid-column: 2/4;
+  }
 }
