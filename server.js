@@ -15,6 +15,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+/** API Routes Go Here */
+app.use('/api/journal', journal);
+app.use('/api/author', author);
+
+
 /** PRODUCTION CODE ONLY
  *Serve static files from the React frontend app 
  */
@@ -25,11 +30,6 @@ if (process.env.NODE_ENV === "production") {
         res.sendFile(path.join(__dirname + "/client/build/index.html"));
     });
 }
-
-/** API Routes Go Here */
-app.use('/api/journal', journal);
-app.use('/api/author', author);
-
 
 /** Connect to Mongo DB */
 const dbURI = process.env.mongoURI;
