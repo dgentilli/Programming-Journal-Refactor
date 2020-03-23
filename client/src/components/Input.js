@@ -40,6 +40,10 @@ class Input extends Component {
         this.setState({ title: '', content: '' });
     }
 
+    handleCancel = e => {
+        e.preventDefault();
+        this.setState({ title: '', content: '' });
+    }
 
     render() {
         let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -66,7 +70,7 @@ class Input extends Component {
 
                         />
                         <button id="submit-btn" className="form-btn" onClick={this.handleSubmit}>Submit</button>
-                        <button id='cancel-btn' className='form-btn'>Cancel</button>
+                        <button id='cancel-btn' className='form-btn' onClick={this.handleCancel}>Cancel</button>
                     </form>
                 </div>
                 <List isLoggedIn={this.state.isLoggedIn} user={this.state.user} title={this.state.title} />
