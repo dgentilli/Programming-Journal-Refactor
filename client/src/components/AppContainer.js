@@ -16,8 +16,8 @@ class AppContainer extends Component {
     render() {
         return (
             <div className="app-container">
-                <About />
                 <LoginControl />
+                <About />
                 <Footer />
             </div>
         );
