@@ -66,7 +66,7 @@ class List extends Component {
 
 
         return (
-            <div className="list-container">
+            <div id="journal" className="list-container">
                 <h2>Journal Entries for {this.state.user.email}</h2>
                 <ul>
                     {journalList}

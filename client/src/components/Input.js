@@ -52,7 +52,7 @@ class Input extends Component {
         console.log("Input user state: ", this.state.user)
         return (
             <>
-                <div className="input-container">
+                <div id="input" className="input-container">
                     <h2>Hello, {this.state.user.email} !</h2>
                     <h3>Make an Entry for{Date.now}</h3>
                     <form>

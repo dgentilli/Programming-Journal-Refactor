@@ -10,7 +10,7 @@ class Header extends Component {
 
     render() {
         return (
-            <div className="header-container">
+            <div id="top" className="header-container">
                 <div className="bg-image"></div>
                 <div className="header-text-container">
                     <h1>Daily Programming Journal</h1>
