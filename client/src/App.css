@@ -174,7 +174,7 @@
 }
 
 .login-signup-container h2{
-  padding-top: 2em;
+  padding-top: 1em;
 }
 
 .login-signup-container input{
@@ -193,6 +193,10 @@
   margin: 0.5em;
   margin-top: 1em;
   margin-bottom: 2em;
+}
+
+.login-signup-container form{
+  margin-bottom: 1em;
 }
 
 .footer-container{
