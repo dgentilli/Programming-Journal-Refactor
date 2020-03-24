@@ -3,7 +3,6 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const keys = require("../config/keys");
 
-const Journal = require("../models/Journal");
 const Author = require("../models/Author");
 
 const validateRegisterInput = require("../validation/signup");
@@ -103,13 +102,10 @@ router.post("/login", (req, res) => {
         //Check Password
         user.comparePassword(password).then(isMatch => {
             if (isMatch) {
-                // User matched
-                // Create Passport JWT Payload
                 const payload = {
                     id: user.id,
                     email: user.email
                 };
-                //Sign Token
                 jwt.sign(
                     payload,
                     keys.secretOrKey,
