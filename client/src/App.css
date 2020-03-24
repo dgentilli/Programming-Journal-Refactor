@@ -145,6 +145,10 @@
   font-size: 0.9em;
 }
 
+.journal-date{
+  font-size: 0.8em;
+}
+
 .list-container button{
   padding: 5px;
   background-color: transparent;
