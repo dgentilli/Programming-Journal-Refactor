@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header';
-import AppContainer from './components/AppContainer';
+import LoginControl from './components/LoginControl';
 
 function App() {
   return (
     <div>
       <Header />
-      <AppContainer />
+      <LoginControl />
     </div>
   );
 }

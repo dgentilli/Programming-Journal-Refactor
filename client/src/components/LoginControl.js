@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Input from './Input';
-import List from './List';
-
+import Footer from './Footer';
+import About from './About';
 
 class LoginControl extends Component {
     constructor(props) {
@@ -154,6 +154,8 @@ class LoginControl extends Component {
             <div>
                 {loginLogout}
                 {display}
+                <About />
+                <Footer isLoggedIn={this.state.isLoggedIn} />
             </div>
         );
     }
