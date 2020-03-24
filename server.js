@@ -7,9 +7,6 @@ const bodyParser = require('body-parser');
 const journal = require('./api/journal');
 const author = require('./api/author');
 
-
-/** API Goes Here */
-
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
