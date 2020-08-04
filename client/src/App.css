@@ -41,6 +41,10 @@
   opacity: 1;
 }
 
+button {
+  outline: none;
+}
+
 .btn-container {
   display: flex;
   justify-content: space-around;
