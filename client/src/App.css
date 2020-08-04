@@ -167,10 +167,6 @@
   margin-top: -1.2em;
 }
 
-.login-signup-container button:hover {
-  transform: scale(1.2);
-}
-
 .logout-btn-container {
   margin-bottom: -1.3em;
   display: flex;
