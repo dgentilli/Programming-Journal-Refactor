@@ -1,7 +1,15 @@
 import React from "react";
+import ToggleButton from "./ToggleButton";
 import { useChangeHandler } from "../hooks/useChangeHandler";
 
-const SignUp = ({ handleSignup, changeEmail, changePassword, user }) => {
+const SignUp = ({
+  handleSignup,
+  changeEmail,
+  changePassword,
+  user,
+  isUser,
+  toggleButton,
+}) => {
   let errMsg;
   !user.success ? (errMsg = user.msg) : (errMsg = null);
   return (
@@ -23,6 +31,7 @@ const SignUp = ({ handleSignup, changeEmail, changePassword, user }) => {
         />
         <div className=".btn-container">
           <button onClick={handleSignup}>Signup</button>
+          <ToggleButton isUser={isUser} toggleButton={toggleButton} />
         </div>
       </form>
     </div>

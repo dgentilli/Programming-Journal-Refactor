@@ -74,25 +74,28 @@ const LoginControl = () => {
 
   let errMsg;
   !user.success ? (errMsg = user.msg) : (errMsg = null);
-  let loginLogout;
 
   let loginSignup;
   if (!isLoggedIn && isUser) {
     loginSignup = (
       <Login
+        isUser={isUser}
         user={user}
         changeEmail={(data) => setEmail(data)}
         changePassword={(data) => setPassword(data)}
         handleLogin={handleLogin}
+        toggleButton={handleUserClick}
       />
     );
   } else if (!isLoggedIn && !isUser) {
     loginSignup = (
       <Signup
+        isUser={isUser}
         user={user}
         changeEmail={(data) => setEmail(data)}
         changePassword={(data) => setPassword(data)}
         handleSignup={handleSignup}
+        toggleButton={handleUserClick}
       />
     );
   } else if (isLoggedIn) {
@@ -104,11 +107,11 @@ const LoginControl = () => {
       <Input isLoggedIn={isLoggedIn} user={user} />
     </div>
   ) : null;
+
   return (
     <div>
       {loginSignup}
       {display}
-      <button onClick={handleUserClick}>Toggle</button>
       <About />
       <Footer isLoggedIn={isLoggedIn} />
     </div>
