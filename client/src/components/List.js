@@ -6,10 +6,6 @@ const List = ({ isLoggedIn, user, title }) => {
 
   useEffect(() => {
     fetchJournalEntries();
-  }, []);
-
-  useEffect(() => {
-    fetchJournalEntries();
   }, [title]);
 
   const fetchJournalEntries = () => {
