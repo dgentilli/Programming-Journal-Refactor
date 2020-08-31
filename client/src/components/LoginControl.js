@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import About from "./About";
 import Login from "./Login";
 import Signup from "./Signup";
+import Logout from "./Logout";
 import { useChangeHandler } from "../hooks/useChangeHandler";
 
 const LoginControl = () => {
@@ -95,21 +96,7 @@ const LoginControl = () => {
       />
     );
   } else if (isLoggedIn) {
-    loginSignup = (
-      <div id="login-control" className="login-signup-container">
-        <div className="logout-btn-container">
-          <button id="logout-btn" onClick={logoutClick}>
-            Logout
-          </button>
-          <button id="logout-btn">
-            <a href="#journal">Journal List</a>
-          </button>
-          <button id="logout-btn">
-            <a href="#about">About</a>
-          </button>
-        </div>
-      </div>
-    );
+    loginSignup = <Logout handleLogout={logoutClick} />;
   }
 
   let display = isLoggedIn ? (
