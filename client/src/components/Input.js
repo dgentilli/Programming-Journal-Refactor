@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import List from "./List";
-import { useChangeHandler } from "../hooks/useChangeHandler";
 
 const Input = ({ isLoggedIn, user }) => {
-  const { values, handleChange, reset } = useChangeHandler({
-    title: "",
-    content: "",
-  });
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
+  const reset = () => {
+    setTitle("");
+    setContent("");
+  };
 
   const submitData = () => {
     const journalData = {
-      title: values.title,
-      content: values.content,
+      title,
+      content,
       author: user.id,
     };
     fetch("/api/journal/create", {
@@ -51,15 +53,15 @@ const Input = ({ isLoggedIn, user }) => {
             type="text"
             name="title"
             placeholder="What sort of lesson or challenge are you writing about?"
-            value={values.title}
-            onChange={handleChange}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
           <textarea
             type="text"
             name="content"
             placeholder="What do you want to record about that lesson learned or challenge encountered today?"
-            value={values.content}
-            onChange={handleChange}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
           />
           <button id="submit-btn" className="form-btn" onClick={handleSubmit}>
             Submit
@@ -69,7 +71,7 @@ const Input = ({ isLoggedIn, user }) => {
           </button>
         </form>
       </div>
-      <List isLoggedIn={isLoggedIn} user={user} title={values.title} />
+      <List isLoggedIn={isLoggedIn} user={user} title={title} />
     </>
   );
 };
