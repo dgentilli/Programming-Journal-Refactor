@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Input from "./Input";
 import Footer from "./Footer";
 import About from "./About";
+import Login from "./Login";
+import Signup from "./Signup";
 import { useChangeHandler } from "../hooks/useChangeHandler";
 
 const LoginControl = () => {
@@ -9,15 +11,19 @@ const LoginControl = () => {
     email: "",
     password: "",
   });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [user, setUser] = useState({});
   const [isUser, setIsUser] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleSubmit = (route) => {
+    console.log("handleSUbmit route", route);
     const userData = JSON.stringify({
-      email: values.email,
-      password: values.password,
+      email: email,
+      password: password,
     });
+    console.log("handleSubmit, userData", userData);
     fetch(`/api/author/${route}`, {
       method: "POST",
       headers: {
@@ -25,6 +31,7 @@ const LoginControl = () => {
       },
       body: userData,
     }).then((res) => {
+      console.log("handleSubmit, server resp", res);
       const resBody = res.json();
       Promise.resolve(resBody).then((userObject) => {
         if (userObject.success === false) {
@@ -35,6 +42,8 @@ const LoginControl = () => {
             setIsUser(true);
           } else {
             setIsLoggedIn(true);
+            setEmail("");
+            setPassword("");
           }
         }
       });
@@ -48,6 +57,7 @@ const LoginControl = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    console.log("handle login runs");
     handleSubmit("login");
   };
 
@@ -64,62 +74,28 @@ const LoginControl = () => {
   let errMsg;
   !user.success ? (errMsg = user.msg) : (errMsg = null);
   let loginLogout;
+
+  let loginSignup;
   if (!isLoggedIn && isUser) {
-    loginLogout = (
-      <div id="login-control" className="login-signup-container">
-        <h2>Login!</h2>
-        <div>{errMsg}</div>
-        <form>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter an email address"
-            value={values.email}
-            onChange={handleChange}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter a password"
-            value={values.password}
-            onChange={handleChange}
-          />
-          <div className=".btn-container">
-            <button onClick={handleLogin}>Login</button>
-            <button onClick={handleUserClick}>Go To Sign up</button>
-          </div>
-        </form>
-      </div>
+    loginSignup = (
+      <Login
+        user={user}
+        changeEmail={(data) => setEmail(data)}
+        changePassword={(data) => setPassword(data)}
+        handleLogin={handleLogin}
+      />
     );
   } else if (!isLoggedIn && !isUser) {
-    loginLogout = (
-      <div id="login-control" className="login-signup-container">
-        <h2>Sign Up!</h2>
-        <div>{errMsg}</div>
-        <form>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter an email address"
-            value={values.email}
-            onChange={handleChange}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter a password"
-            value={values.password}
-            onChange={handleChange}
-          />
-          <div className=".btn-container">
-            <button onClick={handleSignup}>Sign up</button>
-            <button onClick={handleUserClick}>Go To Login</button>
-          </div>
-        </form>
-      </div>
+    loginSignup = (
+      <Signup
+        user={user}
+        changeEmail={(data) => setEmail(data)}
+        changePassword={(data) => setPassword(data)}
+        handleSignup={handleSignup}
+      />
     );
   } else if (isLoggedIn) {
-    loginLogout = (
+    loginSignup = (
       <div id="login-control" className="login-signup-container">
         <div className="logout-btn-container">
           <button id="logout-btn" onClick={logoutClick}>
@@ -143,8 +119,9 @@ const LoginControl = () => {
   ) : null;
   return (
     <div>
-      {loginLogout}
+      {loginSignup}
       {display}
+      <button onClick={handleUserClick}>Toggle</button>
       <About />
       <Footer isLoggedIn={isLoggedIn} />
     </div>
