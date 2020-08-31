@@ -1,164 +1,178 @@
-import React, { Component } from "react";
-import Input from './Input';
-import Footer from './Footer';
-import About from './About';
+import React, { useState } from "react";
+import Input from "./Input";
+import Footer from "./Footer";
+import About from "./About";
 
-class LoginControl extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLoggedIn: false,
-            isUser: false,
-            email: '',
-            password: '',
-            error: {},
-            user: {}
-        };
-    }
-    handleInputChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
-    }
+const LoginControl = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({});
+  const [isUser, setIsUser] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    submitSignupData() {
-        const userData = JSON.stringify({
-            email: this.state.email,
-            password: this.state.password
-        });
-        fetch('/api/author/signup', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: userData
-        }).then(res => {
-            const resBody = res.json();
-            Promise.resolve(resBody).then(userObject => {
-                if (userObject.success === false) {
-                    this.setState({ user: userObject })
-                } else {
-                    this.setState({ isUser: true, user: userObject })
-                }
-            })
-        })
+  const handleInputChange = (e) => {
+    if (e.target.name === "email") {
+      setEmail(e.target.value);
+    } else {
+      setPassword(e.target.value);
     }
+  };
 
-    submitLoginData() {
-        const userData = JSON.stringify({
-            email: this.state.email,
-            password: this.state.password
-        });
-        fetch('/api/author/login', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: userData
-        }).then(res => {
-            const resBody = res.json();
-            Promise.resolve(resBody).then(userObject => {
-                if (userObject.success === false) {
-                    this.setState({ user: userObject })
-                } else {
-                    this.setState({ isLoggedIn: true, user: userObject })
-                }
-            })
-        })
-    }
-    handleSignup = e => {
-        e.preventDefault();
-        this.submitSignupData();
-    }
-
-    handleLogin = e => {
-        e.preventDefault();
-        this.submitLoginData();
-    }
-
-    handleUserClick = (e) => {
-        e.preventDefault();
-        this.setState({ isUser: !this.state.isUser });
-    }
-
-    logoutClick = () => {
-        this.setState({ isLoggedIn: false, user: {} })
-    }
-    render() {
-        let errMsg;
-        !this.state.user.success ? (errMsg = this.state.user.msg) : (errMsg = null)
-        let loginLogout;
-        if (!this.state.isLoggedIn && this.state.isUser) {
-            loginLogout = (
-                <div id="login-control" className="login-signup-container">
-                    <h2>Login!</h2>
-                    <div>{errMsg}</div>
-                    <form>
-                        <input
-                            type='email'
-                            name='email'
-                            placeholder="Enter an email address"
-                            value={this.state.email}
-                            onChange={this.handleInputChange}
-                        />
-                        <input
-                            type='password'
-                            name='password'
-                            placeholder="Enter a password"
-                            value={this.state.password}
-                            onChange={this.handleInputChange}
-                        />
-                        <div className='.btn-container'>
-                            <button onClick={this.handleLogin}>Login</button>
-                            <button onClick={this.handleUserClick}>Go To Sign up</button>
-                        </div>
-                    </form>
-                </div>)
-        } else if (!this.state.isLoggedIn && !this.state.isUser) {
-            loginLogout = (
-                <div id="login-control" className="login-signup-container">
-                    <h2>Sign Up!</h2>
-                    <div>{errMsg}</div>
-                    <form>
-                        <input
-                            type='email'
-                            name='email'
-                            placeholder="Enter an email address"
-                            value={this.state.email}
-                            onChange={this.handleInputChange}
-                        />
-                        <input
-                            type='password'
-                            name='password'
-                            placeholder="Enter a password"
-                            value={this.state.password}
-                            onChange={this.handleInputChange}
-                        />
-                        <div className=".btn-container">
-                            <button onClick={this.handleSignup}>Sign up</button>
-                            <button onClick={this.handleUserClick}>Go To Login</button>
-                        </div>
-                    </form>
-                </div>
-            )
-        } else if (this.state.isLoggedIn) {
-            loginLogout = (<div id="login-control" className="login-signup-container"><div className="logout-btn-container"><button id="logout-btn" onClick={this.logoutClick}>Logout</button><button id="logout-btn"><a href="#journal">Journal List</a></button><button id="logout-btn"><a href="#about">About</a></button></div>
-            </div>)
+  const submitSignupData = () => {
+    const userData = JSON.stringify({
+      email,
+      password,
+    });
+    fetch("/api/author/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: userData,
+    }).then((res) => {
+      const resBody = res.json();
+      Promise.resolve(resBody).then((userObject) => {
+        if (userObject.success === false) {
+          setUser(userObject);
+        } else {
+          setUser(userObject);
+          setIsUser(true);
         }
+      });
+    });
+  };
 
-        let display = (
-            this.state.isLoggedIn ?
-                <div>
-                    <Input isLoggedIn={this.state.isLoggedIn} user={this.state.user} />
-                </div> : null
-        )
-        return (
-            <div>
-                {loginLogout}
-                {display}
-                <About />
-                <Footer isLoggedIn={this.state.isLoggedIn} />
-            </div>
-        );
-    }
-}
+  const submitLoginData = () => {
+    const userData = JSON.stringify({
+      email,
+      password,
+    });
+    fetch("/api/author/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: userData,
+    }).then((res) => {
+      const resBody = res.json();
+      Promise.resolve(resBody).then((userObject) => {
+        if (userObject.success === false) {
+          setUser(userObject);
+        } else {
+          setUser(userObject);
+          setIsLoggedIn(true);
+        }
+      });
+    });
+  };
+  const handleSignup = (e) => {
+    e.preventDefault();
+    submitSignupData();
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    submitLoginData();
+  };
+
+  const handleUserClick = (e) => {
+    e.preventDefault();
+    setIsUser(!isUser);
+  };
+
+  const logoutClick = () => {
+    setIsLoggedIn(false);
+    setUser({});
+  };
+
+  let errMsg;
+  !user.success ? (errMsg = user.msg) : (errMsg = null);
+  let loginLogout;
+  if (!isLoggedIn && isUser) {
+    loginLogout = (
+      <div id="login-control" className="login-signup-container">
+        <h2>Login!</h2>
+        <div>{errMsg}</div>
+        <form>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter an email address"
+            value={email}
+            onChange={handleInputChange}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter a password"
+            value={password}
+            onChange={handleInputChange}
+          />
+          <div className=".btn-container">
+            <button onClick={handleLogin}>Login</button>
+            <button onClick={handleUserClick}>Go To Sign up</button>
+          </div>
+        </form>
+      </div>
+    );
+  } else if (!isLoggedIn && !isUser) {
+    loginLogout = (
+      <div id="login-control" className="login-signup-container">
+        <h2>Sign Up!</h2>
+        <div>{errMsg}</div>
+        <form>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter an email address"
+            value={email}
+            onChange={handleInputChange}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter a password"
+            value={password}
+            onChange={handleInputChange}
+          />
+          <div className=".btn-container">
+            <button onClick={handleSignup}>Sign up</button>
+            <button onClick={handleUserClick}>Go To Login</button>
+          </div>
+        </form>
+      </div>
+    );
+  } else if (isLoggedIn) {
+    loginLogout = (
+      <div id="login-control" className="login-signup-container">
+        <div className="logout-btn-container">
+          <button id="logout-btn" onClick={logoutClick}>
+            Logout
+          </button>
+          <button id="logout-btn">
+            <a href="#journal">Journal List</a>
+          </button>
+          <button id="logout-btn">
+            <a href="#about">About</a>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  let display = isLoggedIn ? (
+    <div>
+      <Input isLoggedIn={isLoggedIn} user={user} />
+    </div>
+  ) : null;
+  return (
+    <div>
+      {loginLogout}
+      {display}
+      <About />
+      <Footer isLoggedIn={isLoggedIn} />
+    </div>
+  );
+};
 
 export default LoginControl;
