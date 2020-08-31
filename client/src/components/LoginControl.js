@@ -5,13 +5,8 @@ import About from "./About";
 import Login from "./Login";
 import Signup from "./Signup";
 import Logout from "./Logout";
-import { useChangeHandler } from "../hooks/useChangeHandler";
 
 const LoginControl = () => {
-  const { values, handleChange, reset } = useChangeHandler({
-    email: "",
-    password: "",
-  });
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState({});
