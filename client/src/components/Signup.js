@@ -1,6 +1,5 @@
 import React from "react";
 import ToggleButton from "./ToggleButton";
-import { useChangeHandler } from "../hooks/useChangeHandler";
 
 const SignUp = ({
   handleSignup,
