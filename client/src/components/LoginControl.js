@@ -13,12 +13,12 @@ const LoginControl = () => {
   const [isUser, setIsUser] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const submitSignupData = () => {
+  const handleSubmit = (route) => {
     const userData = JSON.stringify({
       email: values.email,
       password: values.password,
     });
-    fetch("/api/author/signup", {
+    fetch(`/api/author/${route}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,43 +31,24 @@ const LoginControl = () => {
           setUser(userObject);
         } else {
           setUser(userObject);
-          setIsUser(true);
+          if (route === "signup") {
+            setIsUser(true);
+          } else {
+            setIsLoggedIn(true);
+          }
         }
       });
     });
   };
 
-  const submitLoginData = () => {
-    const userData = JSON.stringify({
-      email: values.email,
-      password: values.password,
-    });
-    fetch("/api/author/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: userData,
-    }).then((res) => {
-      const resBody = res.json();
-      Promise.resolve(resBody).then((userObject) => {
-        if (userObject.success === false) {
-          setUser(userObject);
-        } else {
-          setUser(userObject);
-          setIsLoggedIn(true);
-        }
-      });
-    });
-  };
   const handleSignup = (e) => {
     e.preventDefault();
-    submitSignupData();
+    handleSubmit("signup");
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    submitLoginData();
+    handleSubmit("login");
   };
 
   const handleUserClick = (e) => {
