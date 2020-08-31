@@ -2,26 +2,21 @@ import React, { useState } from "react";
 import Input from "./Input";
 import Footer from "./Footer";
 import About from "./About";
+import { useChangeHandler } from "../hooks/useChangeHandler";
 
 const LoginControl = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { values, handleChange, reset } = useChangeHandler({
+    email: "",
+    password: "",
+  });
   const [user, setUser] = useState({});
   const [isUser, setIsUser] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleInputChange = (e) => {
-    if (e.target.name === "email") {
-      setEmail(e.target.value);
-    } else {
-      setPassword(e.target.value);
-    }
-  };
-
   const submitSignupData = () => {
     const userData = JSON.stringify({
-      email,
-      password,
+      email: values.email,
+      password: values.password,
     });
     fetch("/api/author/signup", {
       method: "POST",
@@ -44,8 +39,8 @@ const LoginControl = () => {
 
   const submitLoginData = () => {
     const userData = JSON.stringify({
-      email,
-      password,
+      email: values.email,
+      password: values.password,
     });
     fetch("/api/author/login", {
       method: "POST",
@@ -98,15 +93,15 @@ const LoginControl = () => {
             type="email"
             name="email"
             placeholder="Enter an email address"
-            value={email}
-            onChange={handleInputChange}
+            value={values.email}
+            onChange={handleChange}
           />
           <input
             type="password"
             name="password"
             placeholder="Enter a password"
-            value={password}
-            onChange={handleInputChange}
+            value={values.password}
+            onChange={handleChange}
           />
           <div className=".btn-container">
             <button onClick={handleLogin}>Login</button>
@@ -125,15 +120,15 @@ const LoginControl = () => {
             type="email"
             name="email"
             placeholder="Enter an email address"
-            value={email}
-            onChange={handleInputChange}
+            value={values.email}
+            onChange={handleChange}
           />
           <input
             type="password"
             name="password"
             placeholder="Enter a password"
-            value={password}
-            onChange={handleInputChange}
+            value={values.password}
+            onChange={handleChange}
           />
           <div className=".btn-container">
             <button onClick={handleSignup}>Sign up</button>
