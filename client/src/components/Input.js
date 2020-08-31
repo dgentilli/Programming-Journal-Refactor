@@ -1,22 +1,17 @@
 import React, { useState } from "react";
 import List from "./List";
+import { useChangeHandler } from "../hooks/useChangeHandler";
 
 const Input = ({ isLoggedIn, user }) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
-  const handleInputChange = (e) => {
-    if (e.target.name === "title") {
-      setTitle(e.target.value);
-    } else {
-      setContent(e.target.value);
-    }
-  };
+  const { values, handleChange, reset } = useChangeHandler({
+    title: "",
+    content: "",
+  });
 
   const submitData = () => {
     const journalData = {
-      title,
-      content,
+      title: values.title,
+      content: values.content,
       author: user.id,
     };
     fetch("/api/journal/create", {
@@ -31,14 +26,12 @@ const Input = ({ isLoggedIn, user }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await submitData();
-    setContent("");
-    setTitle("");
+    reset();
   };
 
   const handleCancel = (e) => {
     e.preventDefault();
-    setContent("");
-    setTitle("");
+    reset();
   };
 
   let options = {
@@ -58,15 +51,15 @@ const Input = ({ isLoggedIn, user }) => {
             type="text"
             name="title"
             placeholder="What sort of lesson or challenge are you writing about?"
-            value={title}
-            onChange={handleInputChange}
+            value={values.title}
+            onChange={handleChange}
           />
           <textarea
             type="text"
             name="content"
             placeholder="What do you want to record about that lesson learned or challenge encountered today?"
-            value={content}
-            onChange={handleInputChange}
+            value={values.content}
+            onChange={handleChange}
           />
           <button id="submit-btn" className="form-btn" onClick={handleSubmit}>
             Submit
@@ -76,7 +69,7 @@ const Input = ({ isLoggedIn, user }) => {
           </button>
         </form>
       </div>
-      <List isLoggedIn={isLoggedIn} user={user} title={title} />
+      <List isLoggedIn={isLoggedIn} user={user} title={values.title} />
     </>
   );
 };
