@@ -14,12 +14,12 @@ const LoginControl = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleSubmit = (route) => {
-    console.log("handleSUbmit route", route);
+    //console.log("handleSUbmit route", route);
     const userData = JSON.stringify({
       email: email,
       password: password,
     });
-    console.log("handleSubmit, userData", userData);
+    //console.log("handleSubmit, userData", userData);
     fetch(`/api/author/${route}`, {
       method: "POST",
       headers: {
@@ -27,15 +27,16 @@ const LoginControl = () => {
       },
       body: userData,
     }).then((res) => {
-      console.log("handleSubmit, server resp", res);
       const resBody = res.json();
       Promise.resolve(resBody).then((userObject) => {
-        if (userObject.success === false) {
+        if (!userObject.success) {
           setUser(userObject);
         } else {
           setUser(userObject);
           if (route === "signup") {
             setIsUser(true);
+            setEmail("");
+            setPassword("");
           } else {
             setIsLoggedIn(true);
             setEmail("");
@@ -53,7 +54,6 @@ const LoginControl = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log("handle login runs");
     handleSubmit("login");
   };
 
