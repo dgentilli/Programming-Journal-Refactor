@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./styles/list.css";
 
 const List = ({ isLoggedIn, user, title }) => {
   const [journalEntries, setJournalEntries] = useState([]);

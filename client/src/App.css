@@ -64,42 +64,9 @@ button {
   color: rgb(110, 19, 19);
 }
 
-.list-container {
-  background-color: #293241;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  /* margin-top: 0.5em; */
-}
-
-.list-container ul {
-  list-style: none;
-  text-align: left;
-}
-
-.list-container li {
-  width: auto;
-  padding: 0.75em;
-}
-
-.journal-title {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.journal-content {
-  padding-right: 1em;
-  font-size: 0.9em;
-}
-
-.journal-date {
-  font-size: 0.8em;
-}
-
 .list-container button {
   padding: 5px;
   background-color: transparent;
-  /* color: #fff; */
   color: #ee6c4d;
   border: 1px solid #fff;
   border-radius: 3px;
@@ -168,7 +135,6 @@ button {
     grid-column: 2/4;
   }
 
-  .list-container,
   .login-signup-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -201,7 +167,7 @@ button {
   .copyright-container {
     grid-column: 2/4;
   }
-  .list-container h2,
+
   h4,
   ul {
     grid-column: 2/4;

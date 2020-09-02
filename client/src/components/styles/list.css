@@ -1,0 +1,40 @@
+.list-container {
+  background-color: #293241;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.list-container ul {
+  list-style: none;
+  text-align: left;
+}
+
+.list-container li {
+  width: auto;
+  padding: 0.75em;
+}
+
+.journal-title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.journal-content {
+  padding-right: 1em;
+  font-size: 0.9em;
+}
+
+.journal-date {
+  font-size: 0.8em;
+}
+
+@media (min-width: 700px) {
+  .list-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .list-container h2 {
+    grid-column: 2/4;
+  }
+}
