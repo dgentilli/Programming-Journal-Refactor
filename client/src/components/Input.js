@@ -43,11 +43,18 @@ const Input = ({ isLoggedIn, user }) => {
     day: "numeric",
   };
   let today = new Date();
+
+  let feedback =
+    !title || !content
+      ? "Please complete your entry before hitting submit."
+      : "Your entry looks good. Hit submit when you're ready!";
+
   return (
     <>
       <div id="input" className="input-container">
         <h2>Hello, {user.email} !</h2>
         <h4>Make an Entry for {today.toLocaleDateString("en-US", options)}</h4>
+        <p>{feedback}</p>
         <form>
           <input
             type="text"
