@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
+import "./styles/login-signup-logout.css";
 
 const Logout = ({ handleLogout }) => {
   return (

@@ -5,6 +5,7 @@ import About from "./About";
 import Login from "./Login";
 import Signup from "./Signup";
 import Logout from "./Logout";
+import "./styles/login-signup-logout.css";
 
 const LoginControl = () => {
   const [email, setEmail] = useState("");
