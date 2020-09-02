@@ -67,14 +67,6 @@ button {
   color: #3d5a80;
 }
 
-.about-container {
-  background-color: #3d5a80;
-  padding: 2em;
-  margin-top: -1.3em;
-  /* margin-top: 0.5em; */
-  /* margin-bottom: -0.75em; */
-}
-
 .input-container {
   background-color: #ee6c4d;
   /* margin-top: 0.5em; */
@@ -260,17 +252,14 @@ button {
     grid-column: 2/4;
   }
 
-  .about-container,
   .input-container,
   .list-container,
   .footer-container,
   .login-signup-container {
     display: grid;
-    /* grid-template-columns: 1fr repeat(2 minmax(auto, 25em)) 1fr; */
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
-  .about-container h2,
   p {
     grid-column: 2/4;
   }
