@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
+import "./styles/header.css";
 
 const Header = ({ isLoggedIn }) => {
   return (
