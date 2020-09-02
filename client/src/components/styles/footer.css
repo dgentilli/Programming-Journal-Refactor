@@ -1,0 +1,38 @@
+.footer-container {
+  height: 10em;
+  background-color: #ee6c4d;
+  padding: 1em;
+}
+
+.footer-nav-links {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.footer-nav-links a {
+  flex: 1;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.footer-container p a {
+  text-decoration: none;
+  color: #293241;
+}
+.footer-projects {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+@media (min-width: 700px) {
+  .footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .footer-nav-links,
+  .footer-projects {
+    grid-column: 2/4;
+  }
+}

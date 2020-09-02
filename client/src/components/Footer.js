@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
+import "./styles/footer.css";
 
 const Footer = ({ isLoggedIn }) => {
   console.log("footer props", isLoggedIn);

@@ -200,35 +200,6 @@ button {
   margin-bottom: 1em;
 }
 
-.footer-container {
-  height: 10em;
-  background-color: #ee6c4d;
-  /* margin-top: 0.5em; */
-  padding: 1em;
-}
-
-.footer-nav-links {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.footer-nav-links a {
-  flex: 1;
-  text-decoration: none;
-  color: #fff;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.footer-container p a {
-  text-decoration: none;
-  color: #293241;
-}
-.footer-projects {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-}
-
 @media (max-width: 330px) {
   .header-container {
     height: auto;
@@ -254,7 +225,6 @@ button {
 
   .input-container,
   .list-container,
-  .footer-container,
   .login-signup-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -283,8 +253,7 @@ button {
     margin-top: 0;
     margin-bottom: 2em;
   }
-  .footer-nav-links,
-  .footer-projects,
+
   .copyright-container {
     grid-column: 2/4;
   }
