@@ -252,6 +252,12 @@ button {
   }
 }
 
+@media (max-width: 700px) {
+  .login-signup-container {
+    padding-top: 24px;
+  }
+}
+
 @media (min-width: 700px) {
   .header-container {
     display: grid;
@@ -272,6 +278,7 @@ button {
     /* grid-template-columns: 1fr repeat(2 minmax(auto, 25em)) 1fr; */
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+
   .about-container h2,
   p {
     grid-column: 2/4;
@@ -280,9 +287,7 @@ button {
   h3 {
     grid-column: 2/4;
   }
-  /* .login-signup-container{
-    margin-top: 1.25em;
-  } */
+
   .login-signup-container h2,
   div {
     grid-column: 2/4;
