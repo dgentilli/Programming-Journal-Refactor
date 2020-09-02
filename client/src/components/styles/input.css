@@ -1,0 +1,35 @@
+.input-container {
+  background-color: #ee6c4d;
+}
+.input-container h2 {
+  padding-top: 1em;
+}
+
+.input-container form {
+  padding-bottom: 1em;
+}
+
+.input-container input {
+  width: 90%;
+  height: 1.2em;
+  padding: 5px;
+}
+.input-container textarea {
+  width: 90%;
+  height: 10em;
+  padding: 5px;
+  margin-top: 0.5em;
+}
+
+@media (min-width: 700px) {
+  .input-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .input-container h2 {
+    grid-column: 2/4;
+  }
+  .input-container form {
+    grid-column: 2/4;
+  }
+}

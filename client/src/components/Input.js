@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import List from "./List";
+import "./styles/input.css";
 
 const Input = ({ isLoggedIn, user }) => {
   const [title, setTitle] = useState("");

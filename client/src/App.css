@@ -48,30 +48,6 @@ button {
   color: #3d5a80;
 }
 
-.input-container {
-  background-color: #ee6c4d;
-  /* margin-top: 0.5em; */
-}
-.input-container h2 {
-  padding-top: 1em;
-}
-
-.input-container form {
-  padding-bottom: 1em;
-}
-
-.input-container input {
-  width: 90%;
-  height: 1.2em;
-  padding: 5px;
-}
-.input-container textarea {
-  width: 90%;
-  height: 10em;
-  padding: 5px;
-  margin-top: 0.5em;
-}
-
 .form-btn {
   height: 3em;
   background-color: transparent;
@@ -192,7 +168,6 @@ button {
     grid-column: 2/4;
   }
 
-  .input-container,
   .list-container,
   .login-signup-container {
     display: grid;
@@ -202,7 +177,7 @@ button {
   p {
     grid-column: 2/4;
   }
-  .input-container h2,
+
   h3 {
     grid-column: 2/4;
   }
@@ -224,9 +199,6 @@ button {
   }
 
   .copyright-container {
-    grid-column: 2/4;
-  }
-  .input-container form {
     grid-column: 2/4;
   }
   .list-container h2,
