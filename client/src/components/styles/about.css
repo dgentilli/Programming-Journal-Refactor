@@ -1,0 +1,8 @@
+.about-container p {
+  text-align: left;
+}
+
+.about-container a {
+  color: #ee6c4d;
+  text-decoration: none;
+}
