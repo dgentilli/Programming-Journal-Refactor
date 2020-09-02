@@ -19,7 +19,7 @@ const Header = ({ isLoggedIn }) => {
             to="login-control"
             spy={true}
             smooth={true}
-            offset={-70}
+            offset={0}
             duration={500}
           >
             Get Started
@@ -30,7 +30,7 @@ const Header = ({ isLoggedIn }) => {
             to="about"
             spy={true}
             smooth={true}
-            offset={-70}
+            offset={0}
             duration={500}
           >
             Read More
