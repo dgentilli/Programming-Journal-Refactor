@@ -3,7 +3,7 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import "./styles/footer.css";
 
 const Footer = ({ isLoggedIn }) => {
-  console.log("footer props", isLoggedIn);
+  //console.log("footer props", isLoggedIn);
 
   const inputLink = isLoggedIn ? "input" : "login-control";
   const journalLink = isLoggedIn ? "journal" : "login-control";
