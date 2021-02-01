@@ -21,6 +21,12 @@
   margin-top: 0.5em;
 }
 
+.input-btn-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.5em;
+}
+
 @media (min-width: 700px) {
   .input-container {
     display: grid;

@@ -53,7 +53,7 @@ const Input = ({ isLoggedIn, user }) => {
   return (
     <>
       <div id="input" className="input-container">
-        <h2>Hello, {user.email} !</h2>
+        <h2>Hello, {user.email}!</h2>
         <h4>Make an Entry for {today.toLocaleDateString("en-US", options)}</h4>
         <p>{feedback}</p>
         <form>
@@ -71,12 +71,15 @@ const Input = ({ isLoggedIn, user }) => {
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
-          <button id="submit-btn" className="form-btn" onClick={handleSubmit}>
-            Submit
-          </button>
-          <button id="cancel-btn" className="form-btn" onClick={handleCancel}>
-            Cancel
-          </button>
+          <div className="input-btn-container">
+            <button id="submit-btn" className="form-btn" onClick={handleSubmit}>
+              Submit
+            </button>
+            <button id="cancel-btn" className="form-btn" onClick={handleCancel}>
+              Cancel
+            </button>
+          </div>
+         
         </form>
       </div>
       <List isLoggedIn={isLoggedIn} user={user} title={title} />
